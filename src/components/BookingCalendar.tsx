@@ -71,7 +71,7 @@ export default function BookingCalendar({ onDateSelect, selectedDate, language }
   };
 
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-full ">
       <CardHeader>
         <CardTitle className="text-xl font-semibold text-center">{t.title}</CardTitle>
         <div className="flex justify-center space-x-4 text-sm">

@@ -97,7 +97,7 @@ export default function EmailConfirmation({ email, bookingId, language, onBack, 
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
+      <div className="w-full ">
         <Card className="shadow-xl border-0 bg-white/95 backdrop-blur-sm">
           <CardHeader className="text-center pb-6">
             <div className="mx-auto w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mb-6 shadow-lg">

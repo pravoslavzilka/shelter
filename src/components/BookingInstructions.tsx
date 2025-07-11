@@ -125,8 +125,8 @@ export default function BookingInstructions({ language, bookingDetails, onBackTo
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-8 px-4">
-      <div className="max-w-4xl mx-auto">
+    <div className="w-full bg-gradient-to-br from-green-50 to-blue-50 py-8 px-4">
+      <div className="w-full">
         {/* Success Header */}
         <div className="text-center mb-8">
           <div className="mx-auto w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mb-6 shadow-lg">

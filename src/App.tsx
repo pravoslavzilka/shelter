@@ -87,33 +87,35 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="w-screen min-h-screen bg-gray-50">
       <Header language={language} onLanguageChange={setLanguage} />
       <Hero />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="w-screen py-12">
         {/* Booking Section */}
-        <section className="mb-16">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              {t.bookingTitle}
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              {t.bookingDescription}
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <BookingCalendar 
-              selectedDate={selectedDate}
-              onDateSelect={setSelectedDate}
-              language={language}
-            />
-            <BookingForm 
-              selectedDate={selectedDate} 
-              language={language}
-              onBookingSubmitted={handleBookingSubmitted}
-            />
+        <section className="mb-16 flex justify-center">
+          <div className="w-full max-w-4xl">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                {t.bookingTitle}
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                {t.bookingDescription}
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <BookingCalendar 
+                selectedDate={selectedDate}
+                onDateSelect={setSelectedDate}
+                language={language}
+              />
+              <BookingForm 
+                selectedDate={selectedDate} 
+                language={language}
+                onBookingSubmitted={handleBookingSubmitted}
+              />
+            </div>
           </div>
         </section>
 
@@ -136,9 +138,9 @@ function App() {
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
+            <div> 
               <h3 className="text-lg font-semibold mb-4">{t.footerTitle}</h3>
               <p className="text-gray-400">
                 {t.footerDescription}

@@ -133,7 +133,7 @@ export default function BookingForm({ selectedDate, language, onBookingSubmitted
   };
 
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-full">
       <CardHeader>
         <CardTitle className="text-xl font-semibold">{t.title}</CardTitle>
         {selectedDate && (
