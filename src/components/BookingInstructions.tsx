@@ -125,8 +125,8 @@ export default function BookingInstructions({ language, bookingDetails, onBackTo
   };
 
   return (
-    <div className="w-full bg-gradient-to-br from-green-50 to-blue-50 py-8 px-4">
-      <div className="w-full">
+    <div className="w-screen bg-gradient-to-br from-green-50 to-blue-50 py-8 px-0">
+      <div className="w-screen px-4">
         {/* Success Header */}
         <div className="text-center mb-8">
           <div className="mx-auto w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mb-6 shadow-lg">
@@ -135,12 +135,12 @@ export default function BookingInstructions({ language, bookingDetails, onBackTo
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             {t.title}
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 w-full mx-auto">
             {t.subtitle}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
           {/* Booking Details */}
           <Card className="shadow-lg border-0 bg-white/95 backdrop-blur-sm">
             <CardHeader>
@@ -218,7 +218,7 @@ export default function BookingInstructions({ language, bookingDetails, onBackTo
         </div>
 
         {/* Important Information */}
-        <Card className="mt-8 shadow-lg border-0 bg-white/95 backdrop-blur-sm">
+        <Card className="mt-8 shadow-lg border-0 bg-white/95 backdrop-blur-sm w-full">
           <CardHeader>
             <CardTitle className="flex items-center space-x-2 text-xl">
               <MessageSquare className="w-5 h-5 text-blue-600" />
@@ -244,7 +244,7 @@ export default function BookingInstructions({ language, bookingDetails, onBackTo
         </Card>
 
         {/* Contact Section */}
-        <Card className="mt-8 shadow-lg border-0 bg-gradient-to-r from-blue-50 to-green-50">
+        <Card className="mt-8 shadow-lg border-0 bg-gradient-to-r from-blue-50 to-green-50 w-full">
           <CardContent className="p-6 text-center">
             <h3 className="text-xl font-semibold text-gray-900 mb-3">{t.contactUs}</h3>
             <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
