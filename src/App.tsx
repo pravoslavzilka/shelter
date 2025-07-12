@@ -47,7 +47,7 @@ function App() {
     }
     setBookingEmail(email);
     setBookingId(id);
-    setShowEmailConfirmation(true);
+    setShowInstructions(true);
   };
 
   const handleEmailVerified = () => {
