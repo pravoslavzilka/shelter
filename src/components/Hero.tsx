@@ -1,4 +1,30 @@
-export default function Hero() {
+import { useState } from 'react';
+
+
+interface HeaderProps {
+  language: 'sk' | 'en';
+  onLanguageChange: (lang: 'sk' | 'en') => void;
+}
+
+
+export default function Hero( { language, onLanguageChange }: HeaderProps) {
+
+  const translations = {
+    sk: {
+      title: 'Historická útulňa',
+      subtitle: ' na Rudnej magistrále',
+      description: 'Objav'
+    },
+    en: {
+      title: 'Mountain Shelter',
+      subtitle: ' on Ore main trail',
+      description: 'Explore'
+    }
+  };
+
+  const t = translations[language];
+
+
   return (
     <section className="relative h-96 bg-cover bg-center bg-no-repeat" style={{
       backgroundImage: 'url(https://images.pexels.com/photos/1761279/pexels-photo-1761279.jpeg?auto=compress&cs=tinysrgb&w=1200)'
@@ -7,12 +33,12 @@ export default function Hero() {
       <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4 h-full flex items-center justify-center">
         <div>
           <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
-            Objavte pokoj
+            {t.title}
             <br />
-            <span className="text-3xl md:text-5xl font-light italic">v horách</span>
+            <span className="text-3xl md:text-5xl font-light italic">{t.subtitle}</span>
           </h1>
           <p className="text-lg md:text-xl mb-8 opacity-90">
-            Zažite dokonalý horský únik v našom útulnom prístrešku obklopenom nedotknutou prírodou
+            {t.description}
           </p>
         </div>
       </div>

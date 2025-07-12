@@ -19,7 +19,7 @@ function App() {
   const translations = {
     sk: {
       bookingTitle: 'Rezervujte si horský únik',
-      bookingDescription: 'Vyberte si preferované dátumy a dokončite rezerváciu, aby ste si zabezpečili dokonalý horský únik.',
+      bookingDescription: 'Vyberte si preferované dátumy a dokončite rezerváciu.',
       whyChooseTitle: 'Prečo si vybrať náš prístrešok?',
       whyChooseDescription: 'Objavte všetko vybavenie a funkcie, ktoré robia z nášho horského prístrešku perfektnú voľbu pre vaše dobrodružstvo v prírode.',
       footerTitle: 'Horský prístrešok',
@@ -89,7 +89,7 @@ function App() {
   return (
     <div className="w-screen min-h-screen bg-gray-50">
       <Header language={language} onLanguageChange={setLanguage} />
-      <Hero />
+      <Hero language={language} onLanguageChange={setLanguage} />
       
       <main className="w-screen py-12">
         {/* Booking Section */}
@@ -149,20 +149,20 @@ function App() {
             <div>
               <h4 className="text-lg font-semibold mb-4">{t.contact}</h4>
               <p className="text-gray-400">
-                {language === 'sk' ? 'Telefón' : 'Phone'}: (555) 123-4567<br />
-                Email: info@mountainshelter.com
+                {language === 'sk' ? 'Telefón' : 'Phone'}: +421902436871<br />
+                Email: muzeum.zajezova@gmail.com
               </p>
             </div>
             <div>
               <h4 className="text-lg font-semibold mb-4">{t.location}</h4>
               <p className="text-gray-400">
-                Mountain Ridge Trail<br />
-                Alpine Valley, CO 80424
+                Polomy, 962 63 <br />
+                Pliešovce, Slovakia
               </p>
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 {t.footerTitle}. {language === 'sk' ? 'Všetky práva vyhradené' : 'All rights reserved'}.</p>
+            <p>&copy; 2025 {t.footerTitle}. {language === 'sk' ? 'Všetky práva vyhradené' : 'All rights reserved'}.</p>
           </div>
         </div>
       </footer>

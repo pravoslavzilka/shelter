@@ -12,7 +12,7 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
 
   const translations = {
     sk: {
-      title: 'Horský prístrešok',
+      title: 'Útutlňa poľa strhárov',
       explore: 'PRESKÚMAŤ',
       amenities: 'VYBAVENIE',
       about: 'O NÁS',
@@ -20,7 +20,7 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
       login: 'PRIHLÁSENIE/'
     },
     en: {
-      title: 'Mountain Shelter',
+      title: 'Shelter of Strhársky manor',
       explore: 'EXPLORE',
       amenities: 'AMENITIES',
       about: 'ABOUT US',
@@ -43,7 +43,7 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#explore" className="text-gray-700 hover:text-green-700 transition-colors">
+            {/*<a href="#explore" className="text-gray-700 hover:text-green-700 transition-colors">
               {t.explore}
             </a>
             <a href="#amenities" className="text-gray-700 hover:text-green-700 transition-colors">
@@ -57,7 +57,7 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
             </a>
             <Button variant="outline" className="border-green-700 text-green-700 hover:bg-green-700 hover:text-white">
               {t.login}
-            </Button>
+            </Button>*/}
             
             {/* Language Switcher */}
             <div className="flex items-center space-x-2">
