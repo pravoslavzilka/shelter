@@ -41,22 +41,22 @@ export default function BookingInstructions({ language, bookingDetails, onBackTo
         {
           icon: MapPin,
           title: 'Adresa',
-          content: 'Mountain Ridge Trail, Alpine Valley, CO 80424'
+          content: "Polomy, 962 63 Pliešovce, Slovensko | GPS: 48°27'23.4N 19°13'48.5E "
         },
         {
           icon: Clock,
           title: 'Check-in / Check-out',
-          content: 'Príchod: 15:00 | Odchod: 11:00'
+          content: 'Príchod od: 15:00 | Odchod do: 11:00'
         },
         {
           icon: Phone,
           title: 'Kontakt',
-          content: '(555) 123-4567'
+          content: '+421902436871'
         },
         {
           icon: Mail,
           title: 'Email',
-          content: 'info@mountainshelter.com'
+          content: 'muzeum.zajezova@gmail.com'
         }
       ],
       contactUs: 'Kontaktujte nás',
@@ -88,22 +88,22 @@ export default function BookingInstructions({ language, bookingDetails, onBackTo
         {
           icon: MapPin,
           title: 'Address',
-          content: 'Mountain Ridge Trail, Alpine Valley, CO 80424'
+          content: "Polomy, 962 63 Pliešovce, Slovakia | GPS: 48°27'23.4N 19°13'48.5E "
         },
         {
           icon: Clock,
           title: 'Check-in / Check-out',
-          content: 'Check-in: 3:00 PM | Check-out: 11:00 AM'
+          content: 'Check-in from: 3:00 PM | Check-out: up to 11:00 AM'
         },
         {
           icon: Phone,
           title: 'Contact',
-          content: '(555) 123-4567'
+          content: '+421902436871'
         },
         {
           icon: Mail,
           title: 'Email',
-          content: 'info@mountainshelter.com'
+          content: 'muzeum.zajezova@gmail.com'
         }
       ],
       contactUs: 'Contact Us',
