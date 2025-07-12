@@ -25,6 +25,13 @@ export interface Booking {
   updated_at?: string;
 }
 
+export interface Availability {
+  date: string;
+  is_available: boolean;
+  max_guests: number;
+  current_bookings: number;
+} 
+
 export async function createBooking(booking: Omit<Booking, 'id' | 'created_at' | 'updated_at'>) {
   const { data, error } = await supabase
     .from('bookings')
@@ -84,4 +91,63 @@ export async function verifyBookingCode(id: string, code: string) {
   }
 
   return data.verification_code === code;
+}
+
+
+export async function getAvailability(startDate: string, endDate: string): Promise<Availability[]> {
+  const { data, error } = await supabase
+    .rpc('get_availability', {
+      start_date: startDate,
+      end_date: endDate
+    });
+
+  if (error) throw error;
+  return data || [];
+}
+
+
+export async function getDateAvailability(date: string): Promise<Availability | null> {
+  const { data, error } = await supabase
+    .from('availability')
+    .select('*')
+    .eq('date', date)
+    .single();
+
+  if (error) {
+    if (error.code === 'PGRST116') {
+      // Date not found in availability table, assume available
+      return {
+        date,
+        is_available: true,
+        max_guests: 6,
+        current_bookings: 0
+      };
+    }
+    throw error;
+  }
+
+  return {
+    date: data.date,
+    is_available: data.is_available && data.current_bookings < data.max_guests,
+    max_guests: data.max_guests,
+    current_bookings: data.current_bookings
+  };
+}
+
+export async function updateAvailability(date: string, updates: Partial<Availability>): Promise<void> {
+  const { error } = await supabase
+    .from('availability')
+    .upsert({
+      date,
+      ...updates,
+      updated_at: new Date().toISOString()
+    });
+
+  if (error) throw error;
+}
+
+// Helper function to check if a date is available
+export async function isDateAvailable(date: string): Promise<boolean> {
+  const availability = await getDateAvailability(date);
+  return availability?.is_available ?? true;
 }

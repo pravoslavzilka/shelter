@@ -1,9 +1,10 @@
 import { Calendar } from '@/components/ui/calendar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { useState } from 'react';
-import { format } from 'date-fns';
+import { useState, useEffect } from 'react';
+import { format, addMonths, startOfMonth, endOfMonth } from 'date-fns';
 import { sk, enUS } from 'date-fns/locale';
+import { getAvailability, type Availability } from '@/lib/supabase';
 
 interface BookingCalendarProps {
   onDateSelect: (date: Date | undefined) => void;
@@ -12,14 +13,10 @@ interface BookingCalendarProps {
 }
 
 export default function BookingCalendar({ onDateSelect, selectedDate, language }: BookingCalendarProps) {
-  // Mock data for unavailable dates
-  const [unavailableDates] = useState<Date[]>([
-    new Date(2024, 11, 15), // December 15, 2024
-    new Date(2024, 11, 16), // December 16, 2024
-    new Date(2024, 11, 25), // December 25, 2024
-    new Date(2024, 11, 26), // December 26, 2024
-    new Date(2025, 0, 1),   // January 1, 2025
-  ]);
+  const [availability, setAvailability] = useState<Map<string, Availability>>(new Map());
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [currentMonth, setCurrentMonth] = useState(new Date());
 
   const translations = {
     sk: {
@@ -27,24 +24,73 @@ export default function BookingCalendar({ onDateSelect, selectedDate, language }
       available: 'Dostupné',
       unavailable: 'Nedostupné',
       selectedDate: 'Vybraný dátum',
-      availableBadge: 'Dostupné'
+      availableBadge: 'Dostupné',
+      loading: 'Načítavam dostupnosť...',
+      error: 'Chyba pri načítavaní dostupnosti'
     },
     en: {
       title: 'Select Your Stay',
       available: 'Available',
       unavailable: 'Unavailable',
       selectedDate: 'Selected Date',
-      availableBadge: 'Available'
+      availableBadge: 'Available',
+      loading: 'Loading availability...',
+      error: 'Error loading availability'
     }
   };
 
   const t = translations[language];
   const locale = language === 'sk' ? sk : enUS;
 
+  // Load availability data for the current month and next month
+  const loadAvailability = async (month: Date) => {
+    try {
+      setLoading(true);
+      setError(null);
+      
+      // Get date range for current month and next month
+      const startDate = startOfMonth(month);
+      const endDate = endOfMonth(addMonths(month, 1));
+      
+      const availabilityData = await getAvailability(
+        format(startDate, 'yyyy-MM-dd'),
+        format(endDate, 'yyyy-MM-dd')
+      );
+      
+      // Convert to Map for efficient lookup
+      const availabilityMap = new Map<string, Availability>();
+      availabilityData.forEach(item => {
+        availabilityMap.set(item.date, item);
+      });
+      
+      setAvailability(availabilityMap);
+    } catch (err) {
+      console.error('Error loading availability:', err);
+      setError(t.error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Load availability on component mount and when month changes
+  useEffect(() => {
+    loadAvailability(currentMonth);
+  }, [currentMonth]);
+
+  // Handle month navigation
+  const handleMonthChange = (newMonth: Date) => {
+    setCurrentMonth(newMonth);
+  };
+
   const isDateUnavailable = (date: Date) => {
-    return unavailableDates.some(unavailableDate => 
-      date.toDateString() === unavailableDate.toDateString()
-    );
+    const dateStr = format(date, 'yyyy-MM-dd');
+    const dateAvailability = availability.get(dateStr);
+    
+    // If no availability data, assume available
+    if (!dateAvailability) return false;
+    
+    // Date is unavailable if explicitly marked as unavailable or fully booked
+    return !dateAvailability.is_available;
   };
 
   const isDateInPast = (date: Date) => {
@@ -53,8 +99,18 @@ export default function BookingCalendar({ onDateSelect, selectedDate, language }
     return date < today;
   };
 
+  const getUnavailableDates = () => {
+    const unavailableDates: Date[] = [];
+    availability.forEach((avail, dateStr) => {
+      if (!avail.is_available) {
+        unavailableDates.push(new Date(dateStr));
+      }
+    });
+    return unavailableDates;
+  };
+
   const modifiers = {
-    unavailable: unavailableDates,
+    unavailable: getUnavailableDates(),
     past: (date: Date) => isDateInPast(date),
   };
 
@@ -70,8 +126,61 @@ export default function BookingCalendar({ onDateSelect, selectedDate, language }
     },
   };
 
+  const getAvailabilityInfo = (date: Date) => {
+    const dateStr = format(date, 'yyyy-MM-dd');
+    const dateAvailability = availability.get(dateStr);
+    
+    if (!dateAvailability) {
+      return { available: true, spotsLeft: 6 };
+    }
+    
+    return {
+      available: dateAvailability.is_available,
+      spotsLeft: dateAvailability.max_guests - dateAvailability.current_bookings
+    };
+  };
+
+  if (loading) {
+    return (
+      <Card className="w-full">
+        <CardHeader>
+          <CardTitle className="text-xl font-semibold text-center">{t.title}</CardTitle>
+        </CardHeader>
+        <CardContent className="p-4">
+          <div className="flex justify-center items-center h-64">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto mb-2"></div>
+              <p className="text-gray-600">{t.loading}</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  if (error) {
+    return (
+      <Card className="w-full">
+        <CardHeader>
+          <CardTitle className="text-xl font-semibold text-center">{t.title}</CardTitle>
+        </CardHeader>
+        <CardContent className="p-4">
+          <div className="text-center text-red-600">
+            <p>{error}</p>
+            <button 
+              onClick={() => loadAvailability(currentMonth)}
+              className="mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+            >
+              {language === 'sk' ? 'Skúsiť znovu' : 'Try Again'}
+            </button>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
-    <Card className="w-full ">
+    <Card className="w-full">
       <CardHeader>
         <CardTitle className="text-xl font-semibold text-center">{t.title}</CardTitle>
         <div className="flex justify-center space-x-4 text-sm">
@@ -94,6 +203,8 @@ export default function BookingCalendar({ onDateSelect, selectedDate, language }
           modifiers={modifiers}
           modifiersStyles={modifiersStyles}
           locale={locale}
+          month={currentMonth}
+          onMonthChange={handleMonthChange}
           className="rounded-md border shadow-sm"
           classNames={{
             months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
@@ -128,6 +239,16 @@ export default function BookingCalendar({ onDateSelect, selectedDate, language }
                 <p className="text-lg font-semibold text-green-900">
                   {format(selectedDate, 'MMMM dd, yyyy', { locale })}
                 </p>
+                {(() => {
+                  const availInfo = getAvailabilityInfo(selectedDate);
+                  return availInfo.available && (
+                    <p className="text-sm text-green-700">
+                      {language === 'sk' 
+                        ? `${availInfo.spotsLeft} voľných miest` 
+                        : `${availInfo.spotsLeft} spots available`}
+                    </p>
+                  );
+                })()}
               </div>
               <Badge variant="secondary" className="bg-green-100 text-green-800">
                 {t.availableBadge}
