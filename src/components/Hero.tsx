@@ -1,4 +1,4 @@
-import { useState } from 'react';
+
 
 
 interface HeaderProps {
@@ -7,7 +7,7 @@ interface HeaderProps {
 }
 
 
-export default function Hero( { language, onLanguageChange }: HeaderProps) {
+export default function Hero( { language }: HeaderProps) {
 
   const translations = {
     sk: {

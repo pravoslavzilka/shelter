@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Snowflake, Handshake, Utensils, Bed, Mountain, Users, Landmark } from 'lucide-react';
+import { Snowflake, Handshake, Bed, Mountain, Users, Landmark } from 'lucide-react';
 
 interface ShelterInfoProps {
   language: 'sk' | 'en';
