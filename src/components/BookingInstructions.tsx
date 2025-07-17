@@ -33,15 +33,15 @@ export default function BookingInstructions({ language, bookingDetails, onBackTo
       guests2: 'hostia',
       guests3: 'hostí',
       accessCode: 'Prístupový kód',
-      accessCodeTitle: 'Kód pre otvorenie úkrytu',
-      accessCodeDescription: 'Tento kód použite na otvorenie elektronického zámku úkrytu. Kód je platný iba v deň vašej rezervácie.',
-      accessCodeNote: 'Dôležité: Kód zdieľajte iba s osobami vo vašej rezervácii',
+      accessCodeTitle: 'Kód pre otvorenie útulne',
+      accessCodeDescription: 'Tento kód použite na otvorenie schránky s kĺúčom. Kód je platný iba v počas Vášho pobytu.',
+      accessCodeNote: 'Dôležité: Kód nezdielajte s nikým mimo vašej rezervácie',
       entryGuide: 'Návod na vstup do úkrytu',
       entrySteps: [
         {
           title: 'Nájdite vstup do úkrytu',
           description: 'Úkryt sa nachádza 50 metrov od hlavnej budovy múzea. Hľadajte betónový vstup so železnými dverami.',
-          image: '/api/placeholder/400/300'
+          image: 'public/images/IMG_6874.jpg'
         },
         {
           title: 'Zadajte prístupový kód',
@@ -157,7 +157,7 @@ export default function BookingInstructions({ language, bookingDetails, onBackTo
         {
           icon: MapPin,
           title: 'Address',
-          content: "Polomy, 962 63 Pliešovce, Slovakia | GPS: 48°27'23.4N 19°13'48.5E "
+          content: "Polomy, 962 63 Pliešovce, Slovakia | GPS: 48°27'23.4N 19°13'48.5E https://maps.app.goo.gl/q7LBrfmUw94SRQDo6"
         },
         {
           icon: Clock,
@@ -186,13 +186,7 @@ export default function BookingInstructions({ language, bookingDetails, onBackTo
 
   const t = translations[language];
 
-  // Generate a realistic access code based on booking details
-  const generateAccessCode = () => {
-    const dateNum = new Date(bookingDetails.bookingDate).getDate();
-    const guestNum = bookingDetails.guests;
-    const baseCode = `${dateNum.toString().padStart(2, '0')}${guestNum}${Math.floor(Math.random() * 100).toString().padStart(2, '0')}`;
-    return baseCode.substring(0, 6);
-  };
+  
 
   const accessCode = "4193";
 
@@ -279,8 +273,7 @@ export default function BookingInstructions({ language, bookingDetails, onBackTo
                     {/* Image placeholder */}
                     <div className="w-full max-w-md h-48 bg-gray-200 rounded-lg flex items-center justify-center">
                       <div className="text-center">
-                        <DoorOpen className="w-12 h-12 text-gray-400 mx-auto mb-2" />
-                        <p className="text-gray-500 text-sm">Step {currentStep + 1} Image</p>
+                        <img src={t.entrySteps[currentStep].image} alt="Something went wrong :(" className="w-32 h-auto" />
                       </div>
                     </div>
                     
