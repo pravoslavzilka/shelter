@@ -36,40 +36,40 @@ export default function BookingInstructions({ language, bookingDetails, onBackTo
       accessCodeTitle: 'Kód pre otvorenie útulne',
       accessCodeDescription: 'Tento kód použite na otvorenie schránky s kĺúčom. Kód je platný iba v počas Vášho pobytu.',
       accessCodeNote: 'Dôležité: Kód nezdielajte s nikým mimo vašej rezervácie',
-      entryGuide: 'Návod na vstup do úkrytu',
+      entryGuide: 'Návod na vstup do útulne',
       entrySteps: [
         {
-          title: 'Nájdite vstup do úkrytu',
-          description: 'Úkryt sa nachádza 50 metrov od hlavnej budovy múzea. Hľadajte betónový vstup so železnými dverami.',
-          image: 'public/images/IMG_6874.jpg'
+          title: 'Obíďte zozadu útulňu',
+          description: '',
+          image: 'public/images/IMG_6874.png'
         },
         {
-          title: 'Zadajte prístupový kód',
-          description: 'Na elektronickej klávesnici zadajte 6-miestny kód. Po zadaní stlačte #.',
-          image: '/api/placeholder/400/300'
+          title: 'Otvorte dvere na padláš útulne',
+          description: 'Na dverách sa bude nachádzať schránka s kľúčom.',
+          image: 'public/images/IMG_6875.png'
         },
         {
-          title: 'Počkajte na odomknutie',
-          description: 'Po správnom zadaní kódu sa ozve pípnutie a zelená LED bude svietiť. Dvere sa automaticky odomknú.',
-          image: '/api/placeholder/400/300'
+          title: 'Zadajte kód',
+          description: 'Zadajte kód a otvrte schránku s kľúčom.',
+          image: 'public/images/IMG_6876.png'
         },
         {
-          title: 'Otvorte dvere',
-          description: 'Silno potiahnite za kľučku. Dvere sú ťažké kvôli bezpečnostným požiadavkám.',
-          image: '/api/placeholder/400/300'
+          title: 'Kľúč použite na otvorenie predných dverí. ',
+          description: 'Kľúč zasunťe to dierk ktorá má menší kovový výstup.',
+          image: 'public/images/IMG_6877.png'
         },
         {
-          title: 'Vstúpte do úkrytu',
-          description: 'Zapnite hlavný vypínač osvetlenia hneď po vstupe. Dvere za sebou zatvorte.',
-          image: '/api/placeholder/400/300'
+          title: 'Vstúpte do útulne',
+          description: 'Po skončení pobytu prosíme poridne zamknite a vrátte prosím kľúč naspäť do schránky kde halvne ZMENŤE kód ! ĎAKUJEME.',
+          image: 'public/images/IMG_6878.png'
         }
       ],
-      nextSteps: 'Ďalšie kroky',
+      nextSteps: 'Pri odchode nezabudnite na:',
       steps: [
-        'Dostanete potvrdzovací email s podrobnosťami rezervácie',
-        'Naša recepcia vás bude kontaktovať 24 hodín pred príchodom',
-        'Pripravte si platný doklad totožnosti pre check-in',
-        'Príchod je možný od 15:00, odchod do 11:00'
+        'Poupratovať za sebou.',
+        'Poriadne zamknúť útulňu.',
+        'Vrátiť kľúč do schránky a kód na schránke zmeniť.',
+        'Nahliásiť prípadne škody alebo komplikácie ktoré sa Vám vyskytli.'
       ],
       importantInfo: 'Dôležité informácie',
       info: [
@@ -122,27 +122,27 @@ export default function BookingInstructions({ language, bookingDetails, onBackTo
         {
           title: 'Find the shelter entrance',
           description: 'The shelter is located 50 meters from the main museum building. Look for a concrete entrance with iron doors.',
-          image: '/api/placeholder/400/300'
+          image: 'public/images/IMG_6874.png'
         },
         {
           title: 'Enter the access code',
           description: 'On the electronic keypad, enter the 6-digit code. After entering, press #.',
-          image: '/api/placeholder/400/300'
+          image: 'public/images/IMG_6875.png'
         },
         {
           title: 'Wait for unlock',
           description: 'After correct code entry, you will hear a beep and green LED will light up. Doors will automatically unlock.',
-          image: '/api/placeholder/400/300'
+          image: 'public/images/IMG_6876.png'
         },
         {
           title: 'Open the doors',
           description: 'Pull the handle firmly. The doors are heavy due to security requirements.',
-          image: '/api/placeholder/400/300'
+          image: 'public/images/IMG_6877.png'
         },
         {
           title: 'Enter the shelter',
           description: 'Turn on the main light switch immediately after entering. Close the doors behind you.',
-          image: '/api/placeholder/400/300'
+          image: 'public/images/IMG_6878.png'
         }
       ],
       nextSteps: 'Next Steps',
@@ -273,13 +273,13 @@ export default function BookingInstructions({ language, bookingDetails, onBackTo
                     {/* Image placeholder */}
                     <div className="w-full max-w-md h-48 bg-gray-200 rounded-lg flex items-center justify-center">
                       <div className="text-center">
-                        <img src={t.entrySteps[currentStep].image} alt="Something went wrong :(" className="w-32 h-auto" />
+                        <img src={t.entrySteps[currentStep].image} alt="Something went wrong :(" className="" />
                       </div>
                     </div>
                     
                     {/* Step content */}
                     <div className="text-center max-w-lg">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-3" style={{ paddingTop: '40px' }}>
                         {t.entrySteps[currentStep].title}
                       </h3>
                       <p className="text-gray-700 leading-relaxed">
