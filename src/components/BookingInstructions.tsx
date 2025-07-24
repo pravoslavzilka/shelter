@@ -115,42 +115,42 @@ export default function BookingInstructions({ language, bookingDetails, onBackTo
       guests3: 'Guests',
       accessCode: 'Access Code',
       accessCodeTitle: 'Shelter Opening Code',
-      accessCodeDescription: 'Use this code to open the electronic lock of the shelter. The code is valid only on your reservation date.',
+      accessCodeDescription: 'Use this code to open the key box. The code is valid only on your reservation date.',
       accessCodeNote: 'Important: Share this code only with people in your reservation',
       entryGuide: 'Shelter Entry Guide',
       entrySteps: [
         {
-          title: 'Find the shelter entrance',
-          description: 'The shelter is located 50 meters from the main museum building. Look for a concrete entrance with iron doors.',
+          title: 'Bypass the shelter',
+          description: 'From the back side, approach the shelter.',
           image: 'public/images/IMG_6874.png'
         },
         {
-          title: 'Enter the access code',
-          description: 'On the electronic keypad, enter the 6-digit code. After entering, press #.',
+          title: 'Open the doors of the upper part of the shelter',
+          description: 'On the other side of the door you will find a key box.',
           image: 'public/images/IMG_6875.png'
         },
         {
-          title: 'Wait for unlock',
-          description: 'After correct code entry, you will hear a beep and green LED will light up. Doors will automatically unlock.',
+          title: 'Unlock the key box with the code',
+          description: 'After correct code entry, you will be able to open the key box and grab the key. Dont forget to shut down the box after you take the key.',
           image: 'public/images/IMG_6876.png'
         },
         {
-          title: 'Open the doors',
-          description: 'Pull the handle firmly. The doors are heavy due to security requirements.',
+          title: 'Access the shelter from the front with the key',
+          description: 'Insert the key into the lock with the smaller metal protrusion.',
           image: 'public/images/IMG_6877.png'
         },
         {
           title: 'Enter the shelter',
-          description: 'Turn on the main light switch immediately after entering. Close the doors behind you.',
+          description: 'Please make sure to lock the shelter properly after your stay and return the key to the box. Dont forget to SHUFFLE the code after closing the box. Thank you.',
           image: 'public/images/IMG_6878.png'
         }
       ],
-      nextSteps: 'Next Steps',
+      nextSteps: 'Checklist for your departure:',
       steps: [
-        'You will receive a confirmation email with booking details',
-        'Our reception will contact you 24 hours before arrival',
-        'Prepare a valid ID for check-in',
-        'Check-in from 3:00 PM, check-out by 11:00 AM'
+        'Clean up after yourself.',
+        'Lock the shelter properly.',
+        'Return the key to the box and shuffle the code.',
+        'Announce any damages or issues you encountered.'
       ],
       importantInfo: 'Important Information',
       info: [
