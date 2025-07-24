@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { CheckCircle, MapPin, Clock, Phone, Mail, Calendar, Users, MessageSquare, Key, ChevronLeft, ChevronRight, Lock, DoorOpen, Home, Shield } from 'lucide-react';
+import { CheckCircle, MapPin, Clock, Phone, Mail, Calendar, Users, MessageSquare, Key, ChevronLeft, ChevronRight, Lock, Shield } from 'lucide-react';
 import { useState } from 'react';
 
 interface BookingInstructionsProps {
