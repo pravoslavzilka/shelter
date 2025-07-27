@@ -41,27 +41,27 @@ export default function BookingInstructions({ language, bookingDetails, onBackTo
         {
           title: 'Obíďte zozadu útulňu',
           description: '',
-          image: 'public/images/IMG_6874.png'
+          image: 'images/IMG_6874.png'
         },
         {
           title: 'Otvorte dvere na padláš útulne',
           description: 'Na dverách sa bude nachádzať schránka s kľúčom.',
-          image: 'public/images/IMG_6875.png'
+          image: 'images/IMG_6875.png'
         },
         {
           title: 'Zadajte kód',
           description: 'Zadajte kód a otvrte schránku s kľúčom.',
-          image: 'public/images/IMG_6876.png'
+          image: 'images/IMG_6876.png'
         },
         {
           title: 'Kľúč použite na otvorenie predných dverí. ',
           description: 'Kľúč zasunťe to dierk ktorá má menší kovový výstup.',
-          image: 'public/images/IMG_6877.png'
+          image: 'images/IMG_6877.png'
         },
         {
           title: 'Vstúpte do útulne',
           description: 'Po skončení pobytu prosíme poridne zamknite a vrátte prosím kľúč naspäť do schránky kde halvne ZMENŤE kód ! ĎAKUJEME.',
-          image: 'public/images/IMG_6878.png'
+          image: 'images/IMG_6878.png'
         }
       ],
       nextSteps: 'Pri odchode nezabudnite na:',
@@ -122,27 +122,27 @@ export default function BookingInstructions({ language, bookingDetails, onBackTo
         {
           title: 'Bypass the shelter',
           description: 'From the back side, approach the shelter.',
-          image: 'public/images/IMG_6874.png'
+          image: 'images/IMG_6874.png'
         },
         {
           title: 'Open the doors of the upper part of the shelter',
           description: 'On the other side of the door you will find a key box.',
-          image: 'public/images/IMG_6875.png'
+          image: 'images/IMG_6875.png'
         },
         {
           title: 'Unlock the key box with the code',
           description: 'After correct code entry, you will be able to open the key box and grab the key. Dont forget to shut down the box after you take the key.',
-          image: 'public/images/IMG_6876.png'
+          image: 'images/IMG_6876.png'
         },
         {
           title: 'Access the shelter from the front with the key',
           description: 'Insert the key into the lock with the smaller metal protrusion.',
-          image: 'public/images/IMG_6877.png'
+          image: 'images/IMG_6877.png'
         },
         {
           title: 'Enter the shelter',
           description: 'Please make sure to lock the shelter properly after your stay and return the key to the box. Dont forget to SHUFFLE the code after closing the box. Thank you.',
-          image: 'public/images/IMG_6878.png'
+          image: 'images/IMG_6878.png'
         }
       ],
       nextSteps: 'Checklist for your departure:',
