@@ -27,7 +27,7 @@ export default function Hero( { language }: HeaderProps) {
 
   return (
     <section className="relative h-96 bg-cover bg-center bg-no-repeat" style={{
-      backgroundImage: 'url(public/images/IMG_6879.png)'
+      backgroundImage: 'url(images/IMG_6879.png)'
     }}>
       <div className="absolute inset-0 bg-black/40"></div>
       <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4 h-full flex items-center justify-center">
